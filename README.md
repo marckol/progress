@@ -6,7 +6,7 @@ When serenix_create_progress.js loaded, it creates the global function createPro
 
 ## Examples
 
-```
+```js
             var sync = {
                 applyTo: { updatable: '[[previous-element]]', prefix: 'No labeled progress (', sufix: '%):'}
             };

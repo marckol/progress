@@ -163,6 +163,22 @@
                 el.__fireChange(ev);
             }
         });
+        addEvt('keydown', input, function(ev) {
+			var which = (ev=ev||window.event).which||ev.keyCode;
+			if (which === 13) {
+				if ((el = this.__progressEl__)) {
+					stopEditing(el, ev);
+					ev.oldValue = el.__oldValue__;
+					ev.progressElement = ev.progressEl = ev.progress = el;
+					ev.changeTarget = el;
+					if (el.__synchronizer_) {
+						el.__synchronizer_.process(el);
+					}
+					el.__fireChange(ev);
+				}
+				preventDefault(ev);
+			}
+		});
         ed.style.display = display||'none';
         
         ed.appendChild(el.__input__ = input);
